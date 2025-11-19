@@ -6,8 +6,8 @@ import os
 
 app = Flask(__name__)
 
-print("Loading all-MiniLM-L6-v2 model...")
-model = SentenceTransformer("all-MiniLM-L6-v2")
+print("Loading paraphrase-MiniLM-L3-v2 model...")
+model = SentenceTransformer("paraphrase-MiniLM-L3-v2")  # Smaller model
 print("Model loaded successfully!")
 
 @app.route("/embed", methods=["POST"])
@@ -48,4 +48,4 @@ def health():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     print(f"EMBEDDING SERVICE STARTING ON PORT {port}")
-    app.run(host="0.0.0.0", port=port,debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)  # Set debug=False for production
